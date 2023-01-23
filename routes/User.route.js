@@ -62,7 +62,7 @@ UserRouter.post("/login", async (req, res) => {
           expiresIn: "40 days",
         });
 
-        res.cookie("timeToken", token, { httpOnly: true });
+        res.cookie("timeToken", "token", { httpOnly: true });
         res.cookie("refreshToken", refreshedToken, { httpOnly: true });
         res.send({
           result: true,

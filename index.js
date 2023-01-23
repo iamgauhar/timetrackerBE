@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 //   return res.status(200).send({ reports: [{ "report 1": "asdfdas" }] });
 // });
 
-app.listen(5000, async () => {
+app.listen(5001, async () => {
   try {
     await connection;
     console.log("DB Connected");

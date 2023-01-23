@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const { UserModel } = require("../models/User.model");
 const { userrValidation } = require("../middlewares/userValidation");
+const { set } = require("mongoose");
 
 require("dotenv").config();
 
@@ -62,8 +63,9 @@ UserRouter.post("/login", async (req, res) => {
           expiresIn: "40 days",
         });
 
-        res.cookie("timeToken", "token", { httpOnly: true });
-        res.cookie("refreshToken", refreshedToken, { httpOnly: true });
+        res.cookieParser("timeToken", token, { httpOnly: true });
+        res.cookieParser("refreshToken", refreshedToken, { httpOnly: true });
+
         res.send({
           result: true,
           token: token,
